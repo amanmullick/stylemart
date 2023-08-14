@@ -1,0 +1,71 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+
+<style type="text/css">
+    .ftco-animate img{
+        width: 400px;
+        height: 400px;
+        object-fit: contain;
+
+    }
+</style>
+
+    
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{{prod.image.url}}" class="image-popup"><img src="{{prod.image.url}}" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{prod.name}}</h3>
+    				<div class="rating d-flex">
+							<p class="text-left mr-4">
+								<a href="#" class="mr-2">5.0</a>
+								<a href="#"><span class="ion-ios-star-outline"></span></a>
+								<a href="#"><span class="ion-ios-star-outline"></span></a>
+								<a href="#"><span class="ion-ios-star-outline"></span></a>
+								<a href="#"><span class="ion-ios-star-outline"></span></a>
+								<a href="#"><span class="ion-ios-star-outline"></span></a>
+							</p>
+							<p class="text-left mr-4">
+								<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+							</p>
+							<p class="text-left">
+								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+							</p>
+						</div>
+    				<p class="price"><span>Rs {{prod.price}}</span></p>
+    				<p>
+    					{{prod.desc}}
+						</p>
+						<div class="row mt-4">
+							<div class="col-md-6">
+								<div class="form-group d-flex">
+		              <div class="select-wrap">
+	                  
+	                  <select name="" id="" class="form-control">
+	                  	<option value="">{{prod.category}}</option>
+	                    
+	                  </select>
+	                </div>
+		            </div>
+							</div>
+							<div class="w-100"></div>
+							
+	          	<div class="w-100"></div>
+	          	<div class="col-md-12">
+	          		<p style="color: #000;">80 piece available</p>
+	          	</div>
+          	</div>
+          	<p><a href="{% url 'edit_my_prod' pk=prod.pk %}" class="btn btn-black py-3 px-5">Edit </a>
+          			<a href="{% url 'delete_prod' pk=prod.pk %}" class="btn btn-black py-3 px-5">Delete </a>
+          	</p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+{% endblock %}

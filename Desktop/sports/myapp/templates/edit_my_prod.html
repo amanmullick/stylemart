@@ -1,0 +1,90 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+     
+        .dropdown {
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    border: solid 1px rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,0);
+    > * {
+        padding: 15px;
+        line-height: 32px;
+        border: none;
+    }
+    label {
+        margin: 0;
+        font-size: 100%;
+        border-right: none;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    select {
+        background-color: #fafafa; 
+        margin: 1px;
+        font-size: 100%;
+        border-left: none;
+        color: #777777;
+
+    }
+}
+    
+</style>
+
+  <div class="registration-form">
+
+    <form action="{% url 'edit_my_prod' pk=prod.pk %}" method="post" enctype="multipart/form-data"> 
+    	{% csrf_token %}
+    	
+    	{% if msg %}
+    	<div class="form-group" style="color:red; text-align:center;">
+        	{{msg}}
+        </div>
+        {% endif %}
+
+        
+
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+       
+        <div >
+            <h4 style="text-align: center; font-weight: bold;">Product Details</h4>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control item" id="name" name="name" placeholder=" {{prod.name}}" />
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control item" id="price" name="price" placeholder=" {{prod.price}}" required />
+        </div>
+         <div class="form-group form-control item " style="font-size: 15px;">
+            <label style="margin-left: ;">Size : </label>
+            <label style="margin-left: 7px;">  <input style="accent-color: #FFA45C;" type="radio" id="radiob" name="size" value="s"> Small(S) </label>
+            <label style="margin-left: 7px;">  <input style="accent-color:#FFA45C;" type="radio" id="radiob" name="size" value="m"> Medium(M) </label>
+            <label style="margin-left: 7px;">  <input style="accent-color:#FFA45C;" type="radio" id="radiob" name="size" value="l"> Large(L) </label>
+            <label style="margin-left: 7px;">  <input style="accent-color:#FFA45C;" type="radio" id="radiob" name="size" value="xl"> XtraLarge(XL) </label>
+        </div>
+        
+        <div class="form-group">
+            <img src="{{prod.image.url}}" width="100px" height="100px">
+            <input type="file" class="form-control item" id="price" name="image" />
+        </div>
+        <div class="form-group">
+            <textarea name="desc" id="desc" cols="30" rows="7" class="form-control item" placeholder="{{prod.desc}}"></textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" value="Update Product" class="btn btn-block create-account" />
+        </div>
+    </form>
+   
+</div>
+
+
+
+{% endblock %}

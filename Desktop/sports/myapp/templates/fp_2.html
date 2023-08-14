@@ -1,0 +1,46 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+
+  <div class="registration-form">
+    
+    <form action="{% url 'fp_2' %}" method="post"> 
+        {% csrf_token %}
+
+        {% if msg %}
+        <div class="form-group" style="color:red; text-align:center;">
+            {{msg}}
+        </div>
+        {% endif %}
+        
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+        
+            <div class="d-flex justify-content-center align-items-center container">
+                <div class=" px-3">
+                    <h5 class="m-0 text-center">Otp Verification</h5><span class="mobile-text ">Enter the code we just send on your registered email id <b class="text-danger">{{email}}</b></span>
+                    <input type="hidden" name="email" value="{{email}}">
+                    <div class="d-flex flex-row mt-4">
+                        <input type="text" name="a" class="form-control input-key text-center" autofocus="" maxlength="1">
+                        <input type="text" name="b" class="form-control input-key text-center" maxlength="1" >
+                        <input type="text" name="c" class="form-control input-key text-center" maxlength="1">
+                        <input type="text" name="d" class="form-control input-key text-center" maxlength="1">
+                        
+                    </div>
+                    <div class="text-center mt-4"><span class="d-block mobile-text">Don't receive the code?</span>
+                        <a href="{% url 'fp_1' %}"> <span class="font-weight-bold text-danger cursor">Resend</span></a></div>
+                </div>
+            </div>
+        <div class="form-group">
+            <input type="submit" name="verify" value="VERIFY" class="btn btn-block create-account" />
+        </div>
+
+    </form>
+   
+</div>
+
+
+
+{% endblock %}

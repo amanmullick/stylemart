@@ -1,0 +1,123 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+   
+
+    <section class="ftco-section ">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 ftco-animate">
+
+ <div class="row mt-5 pt-3 d-flex">
+                <div class="col-md-6 d-flex">
+                    <div class="cart-detail cart-total bg-light p-3 p-md-4">
+                        <h3 class="billing-heading mb-4">Cart Total</h3>
+                        <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>Rs {{amount}}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    <span>Rs 0.00</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span>Rs 0.00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>Rs {{amount}}</span>
+                                </p>
+                                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cart-detail bg-light p-3 p-md-4">
+                        <h3 class="billing-heading mb-4">Payment Method</h3>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                               <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                               <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                               <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="checkbox">
+                                               <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <button id="rzp-button1" class="btn btn-primary py-3 px-4">Pay with Razorpay</button>
+                                    </p>
+                                </div>
+                </div>
+              </div>
+
+
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_5KIG5ErLbXbSZO", // Enter the Key ID generated from the Dashboard
+    "amount": "{{amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "myapp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+     
+        .dropdown {
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    border: solid 1px rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,0);
+    > * {
+        padding: 15px;
+        line-height: 32px;
+        border: none;
+    }
+    label {
+        margin: 0;
+        font-size: 100%;
+        border-right: none;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    select {
+        background-color: #fafafa; 
+        margin: 1px;
+        font-size: 100%;
+        border-left: none;
+        color: #777777;
+
+    }
+}
+    
+</style>
+
+  <div class="registration-form">
+
+    <form action="{% url 'add_prod' %}" method="post" enctype="multipart/form-data"> 
+    	{% csrf_token %}
+    	
+    	{% if msg %}
+    	<div class="form-group" style="color:red; text-align:center;">
+        	{{msg}}
+        </div>
+        {% endif %}
+
+        
+
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+       
+        <div >
+            <h4 style="text-align: center; font-weight: bold;">Product Details</h4>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control " id="name" name="name" placeholder=" Name" />
+        </div>
+
+
+        <div class="form-group" > 
+            <label for="state"><b>Category:</b></label><br>
+            <select name="category" id="state" class="form-control">
+
+              <option value="t_shirts">T-Shirts</option>
+              <option value="casual_shirts">Casual Shirts</option>
+              <option value="formal_shirts">Formal Shirts</option>
+              <option value="sweatshirts">Sweatshirts</option>
+              <option value="sweaters">Sweaters</option>
+              <option value="jackets">Jackets</option>
+              <option value="blazers_coats">Blazers & Coats</option>
+              <option value="winter_coats">Winter Coats</option>
+              <option value="jumpsuits">Jumpsuits</option>
+              <option value="jeans">Jeans</option>
+              <option value="casual_trousers">Casual Trousers</option>
+              <option value="formal_trousers">Formal Trousers</option>
+              <option value="shorts">Shorts</option>
+              <option value="track_pants_joggers">Track Pants & Joggers</option>
+              <option value="wallets">Wallets</option>
+              <option value="belts">Belts</option>
+              <option value="perfumes_body_mists">Perfumes & Body Mists</option>
+              <option value="trimmers">Trimmers</option>
+              <option value="deodorants">Deodorants</option>
+              <option value="phone_cases">Phone Cases</option>
+              <option value="helmets">Helmets</option>
+              <option value="rings_wristwear">Rings & Wristwear</option>
+             
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Gender"><b>Gender:</b></label><br>
+                <select name="gender" id="gender" class="form-control">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+        </div>
+
+         <div class="form-group  " >
+            <label for="size"><b>Size:</b></label><br>
+                <select name="size" id="size" class="form-control">
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+              </select>
+        </div>
+
+         <div class="form-group">
+            <input type="number" class="form-control " id="price" name="price" placeholder=" Price" />
+        </div>
+        
+        <div class="form-group">
+            <label for="size"><b>Image:</b></label>
+            <input type="file" class="form-control " id="price" name="image" />
+        </div>
+
+        <div class="form-group">
+            <textarea name="desc" id="desc" cols="30" rows="7" class="form-control " placeholder="Description"></textarea>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <input type="submit" value="Add Product" class="btn btn-block create-account" />
+        </div>
+
+    </form>
+   
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+
+  <div class="registration-form ">
+
+    <form action="{% url 'signup' %}" method="post"> 
+    	{% csrf_token %}
+    	
+    	{% if msg %}
+    	<div class="form-group" style="color:red; text-align:center;">
+        	{{msg}}
+        </div>
+        {% endif %}
+
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+        <div class="form-group">
+        	<label style="margin-left: 10px;">What do you want ?</label>
+			<label style="margin-left: 50px;">  <input style="accent-color: #FFA45C;" type="radio" id="radiob" name="utype" value="buyer"> Buy Product </label>
+			<label style="margin-left: 20px;">  <input style="accent-color:#FFA45C;" type="radio" id="radiob" name="utype" value="seller"> Sell Product </label>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="name" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="email" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="pswd" name="pswd" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item" id="pswd" name="cpswd" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phn" name="phn" placeholder="Phone Number">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" name="submit" value="Create Account" class="btn btn-block create-account" />
+        </div>
+    </form>
+   
+</div>
+
+
+
+{% endblock %}

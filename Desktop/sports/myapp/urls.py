@@ -1,0 +1,58 @@
+from django.urls import path
+from . import views
+
+urlpatterns=[
+
+	path('',views.index,name='index'),
+	path('about/',views.about,name='about'),
+	path('blog/',views.blog,name='blog'),
+	path('blog_single/',views.blog_single,name='blog_single'),
+	path('cart/',views.cart,name='cart'),
+	path('checkout/',views.checkout,name='checkout'),
+	path('contact/',views.contact,name='contact'),
+	path('product_single/',views.product_single,name='product_single'),
+	path('shop/',views.shop,name='shop'),
+	path('signup/',views.signup,name='signup'),
+	path('login/',views.login,name='login'),
+	path('logout/',views.logout,name='logout'),
+	path('fp_1/',views.fp_1,name='fp_1'),
+	path('fp_2/',views.fp_2,name='fp_2'),
+	path('fp_3/',views.fp_3,name='fp_3'),
+	path('seller_index/',views.seller_index,name='seller_index'),
+	path('add_prod/',views.add_prod,name='add_prod'),
+	path('my_prod/',views.my_prod,name='my_prod'),
+	path('my_prod_single/<int:pk>',views.my_prod_single,name='my_prod_single'),
+	path('edit_my_prod/<int:pk>',views.edit_my_prod,name='edit_my_prod'),
+	path('delete_prod/<int:pk>',views.delete_prod,name='delete_prod'),
+	path('buyer_prod_single/<int:pk>',views.buyer_prod_single,name='buyer_prod_single'),
+	path('add_to_cart/<int:pk>',views.add_to_cart,name='add_to_cart'),
+	path('remove_from_cart/<int:pk>',views.remove_from_cart,name='remove_from_cart'),
+	path('billing_info/',views.billing_info,name='billing_info'),
+	path('payment/',views.payment,name='payment'),
+	path('t_shirts/',views.t_shirts,name='t_shirts'),
+	path('casual_shirts/',views.casual_shirts,name='casual_shirts'),
+	path('formal_shirts/',views.formal_shirts,name='formal_shirts'),
+	path('sweatshirts/',views.sweatshirts,name='sweatshirts'),
+	path('sweaters/',views.sweaters,name='sweaters'),
+	path('jackets/',views.jackets,name='jackets'),
+	path('blazers_coats/',views.blazers_coats,name='blazers_coats'),
+	path('winter_coats/',views.winter_coats,name='winter_coats'),
+	path('jumpsuits/',views.jumpsuits,name='jumpsuits'),
+
+	path('jeans/',views.jeans,name='jeans'),
+	path('casual_trousers/',views.casual_trousers,name='casual_trousers'),
+	path('formal_trousers/',views.formal_trousers,name='formal_trousers'),
+	path('shorts/',views.shorts,name='shorts'),
+	path('track_pants_joggers/',views.track_pants_joggers,name='track_pants_joggers'),
+
+	path('wallets/',views.wallets,name='wallets'),
+	path('belts/',views.belts,name='belts'),
+	path('perfumes_body_mists/',views.perfumes_body_mists,name='perfumes_body_mists'),
+	path('trimmers/',views.trimmers,name='trimmers'),
+	path('deodorants/',views.deodorants,name='deodorants'),
+	path('phone_cases/',views.phone_cases,name='phone_cases'),
+	path('helmets/',views.helmets,name='helmets'),
+	path('rings_wristwear/',views.rings_wristwear,name='rings_wristwear'),
+
+
+]
